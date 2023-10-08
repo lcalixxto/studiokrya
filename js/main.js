@@ -91,7 +91,15 @@ function animate({
 
 /*** 2. Inits ***/
 
+/* 2.1 Init parallax */
+/*(function() {
+	var images = document.querySelectorAll('.__js_parallax img');
+	new simpleParallax(images, {
+		scale: 1.3
+	});
+})();*/
 
+/* 2.2 Init google map */
 (function() {
 	var map = '';
 
@@ -106,6 +114,7 @@ function animate({
 	}
 })();
 
+/* 2.3 Animsition init */
 (function() {
 	$(".animsition").animsition({
 		inClass: 'fade-in',
@@ -113,17 +122,20 @@ function animate({
 		inDuration: 1500,
 		outDuration: 1000,
 		linkElement: '.animsition-link',
+		// e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
 		loading: true,
-		loadingParentElement: 'body',
-		loadingClass: 'preloader',
+		loadingParentElement: 'body', //animsition wrapper element
+		loadingClass: 'preloader', //'animsition-loading',
 		loadingInner: `<div class="preloader__spinner">
 			<span class="preloader__double-bounce"></span>
 			<span class="preloader__double-bounce preloader__double-bounce--delay"></span>
-		</div>`,
+		</div>`, // e.g '<img src="loading.svg" />
 		timeout: false,
 		timeoutCountdown: 5000,
 		onLoadEvent: true,
 		browser: ['animation-duration', '-webkit-animation-duration'],
+		// "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+		// The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
 		overlay: false,
 		overlayClass: 'animsition-overlay-slide',
 		overlayParentElement: 'body',
@@ -133,6 +145,7 @@ function animate({
 	});
 })();
 
+/* 2.4 AOS init */
 (function() {
 	$('.animsition').on('animsition.inEnd', function() {
 		AOS.init({
@@ -141,6 +154,7 @@ function animate({
 	});
 })();
 
+/* 3. Header */
 (function() {
 	var header = $('.header');
 	var leftward = $('.leftward-wrapper');
@@ -257,6 +271,7 @@ function animate({
 	}
 })();
 
+/* 4. Change opacity logo on scroll */
 (function() {
 	var logo = $('.vertical-logo');
 
@@ -297,6 +312,7 @@ function animate({
 
 })();
 
+/* 5. Fixed footer */
 (function() {
 
 	$(window).on('load', function() {
@@ -337,6 +353,7 @@ function animate({
 	});
 })();
 
+/* 6. Mobile menu */
 (function() {
 	var menuOpenBtn = $('.menu-toggle');
 	var menuCloseBtn = $('.mobile-canvas__close');
@@ -513,8 +530,10 @@ function animate({
 	}
 })();
 
+/* 7. Hint fields */
 (function() {
 	var fields = $('.field input, .field textarea');
+	//var fields = $('.field input').add('.field textarea');
 	var ModifierClass = 'field--filled';
 
 	fields.on('focus', function() {
@@ -528,6 +547,7 @@ function animate({
 	});
 })();
 
+/* 8. Accordion */
 (function() {
 	var btn = $('.accordion__item-header');
 	var content = $('.accordion__item-body');
@@ -540,6 +560,7 @@ function animate({
 
 /*** 9. Carousels ***/
 
+/* 9.1 Carousel */
 (function() {
 	var carouselSelectors = ['.__js_carousel-latest-news', '.__js_carousel-latest-projects'];
 
@@ -566,6 +587,7 @@ function animate({
 	});
 })();
 
+/* 9.2 Team carousel */
 (function() {
 	var carouselSelector = '.__js_team-carousel-only-mobile';
 	var carousel;
@@ -595,6 +617,7 @@ function animate({
 	}
 })();
 
+/* 10. Animation of statistics */
 (function() {
 	$(window).on('load', function() {
 		var statistics = $('.statistics');
@@ -635,6 +658,7 @@ function animate({
 	});
 })();
 
+/* 11. Tooltip pages */
 (function() {
 	var windowWidth = $(window).width();
 
@@ -644,10 +668,15 @@ function animate({
 		var item = $('.tooltip__item');
 		item.on('mouseover', onMarqueeItemHover);
 	}).marquee({
+		//speed in milliseconds of the marquee
 		duration: marqueeSpeed,
+		//gap in pixels between the tickers
 		gap: 0,
+		//time in milliseconds before the marquee will start animating
 		delayBeforeStart: 0,
+		//'left' or 'right'
 		direction: 'left',
+		//true or false - should the marquee be duplicated to show an effect of continues flow
 		duplicated: true,
 		startVisible: true
 	});
@@ -656,10 +685,15 @@ function animate({
 		var item = $('.tooltip__item');
 		item.on('mouseover', onMarqueeItemHover);
 	}).marquee({
+		//speed in milliseconds of the marquee
 		duration: marqueeSpeed,
+		//gap in pixels between the tickers
 		gap: 0,
+		//time in milliseconds before the marquee will start animating
 		delayBeforeStart: 0,
+		//'left' or 'right'
 		direction: 'right',
+		//true or false - should the marquee be duplicated to show an effect of continues flow
 		duplicated: true,
 		startVisible: true
 	});
@@ -726,6 +760,7 @@ function animate({
 	}
 })();
 
+/* 12. Masonry */
 (function() {
 	$(window).on('load', function() {
 		var filterItem = $('.filter__item');
@@ -751,6 +786,7 @@ function animate({
 	});
 })();
 
+/* 13. Pagepiling */
 (function() {
 	var headerClasses = $('.header').attr('class');
 
@@ -797,6 +833,7 @@ function animate({
 	}
 })();
 
+/* 14. Animation of skills */
 (function() {
 	$(window).on('load', function() {
 		var skills = $('.skills');
@@ -852,6 +889,7 @@ function animate({
 	});
 })();
 
+/* 15. Anchor */
 (function() {
 	anchorScroll($('.anchor'));
 
@@ -866,6 +904,7 @@ function animate({
 	}
 })();
 
+/* 16. Projects listing */
 (function() {
 	var container = $('.projects-listing__container');
 

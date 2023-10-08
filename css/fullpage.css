@@ -1,15 +1,26 @@
+/*!
+ * fullPage 3.0.9
+ * https://github.com/alvarotrigo/fullPage.js
+ *
+ * @license GPLv3 for open source use only
+ * or Fullpage Commercial License for commercial use
+ * http://alvarotrigo.com/fullPage/pricing/
+ *
+ * Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo
+ */
 html.fp-enabled,
 .fp-enabled body {
     margin: 0;
     padding: 0;
     overflow:hidden;
 
+    /*Avoid flicker on slides transitions for mobile phones #336 */
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 .fp-section {
     position: relative;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari<=5 Android<=3 */
+    -moz-box-sizing: border-box; /* <=28 */
     box-sizing: border-box;
 }
 .fp-slide {
@@ -24,7 +35,7 @@ html.fp-enabled,
     height: 100%;
     overflow: hidden;
     position: relative;
-    -webkit-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out; /* Safari<=6 Android<=4.3 */
     transition: all 0.3s ease-out;
 }
 .fp-section.fp-table, .fp-slide.fp-table {
@@ -43,10 +54,10 @@ html.fp-enabled,
     position: relative;
 }
 .fp-controlArrow {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -ms-user-select: none;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
     position: absolute;
     z-index: 4;
     top: 50%;
@@ -213,6 +224,7 @@ html.fp-enabled,
     height: auto !important;
 }
 
+/*Only display content to screen readers*/
 .fp-sr-only{
     position: absolute;
     width: 1px;
